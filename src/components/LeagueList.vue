@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { League } from '../types/league';
+import type { League } from '../services/api.types';
 import LeagueItem from './LeagueItem.vue';
 
 interface Props {

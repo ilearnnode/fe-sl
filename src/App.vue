@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import type { League } from './types/league';
+import type { League } from './services/api.types';
 import { apiService } from './services/api';
 import LeagueList from './components/LeagueList.vue';
 import SearchBar from './components/SearchBar.vue';

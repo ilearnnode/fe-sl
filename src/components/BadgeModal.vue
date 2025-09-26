@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import type { League, Season } from '../types/league';
+import type { League, Season } from '../services/api.types';
 import { apiService } from '../services/api';
 
 interface Props {
@@ -94,7 +94,7 @@ const fetchSeasonBadges = async () => {
   error.value = '';
 
   try {
-    const data = await apiService.getSeasonBadge(props.league.idLeague);
+    const data = await apiService.getSeasonBadges(props.league.idLeague);
     seasons.value = data;
   } catch (err) {
     error.value = 'Failed to load season badges';
