@@ -2,17 +2,7 @@
   <div id="app" class="min-h-screen bg-gray-50">
     <div class="container mx-auto px-4 py-8">
       <header class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-6">Sports Leagues</h1>
-
-        <div class="flex flex-col md:flex-row gap-4 mb-6">
-          <div class="flex-1">
-            <SearchBar v-model="searchTerm" />
-          </div>
-          <SportFilter
-            v-model="selectedSport"
-            :sports="uniqueSports"
-          />
-        </div>
+        <h1 class="text-3xl font-bold text-gray-900">Sports Leagues</h1>
       </header>
 
       <main>
@@ -30,16 +20,27 @@
           </button>
         </div>
 
-        <LeagueList
-          v-else
-          :leagues="filteredLeagues"
-          @select="handleLeagueSelect"
-        />
+        <div v-else>
+          <div class="flex flex-col md:flex-row gap-4 mb-6">
+            <div class="flex-1">
+              <SearchBar v-model="searchTerm" />
+            </div>
+            <SportFilter
+              v-model="selectedSport"
+              :sports="uniqueSports"
+            />
+          </div>
+
+          <LeagueList
+            :leagues="filteredLeagues"
+            @select="handleLeagueSelect"
+          />
+        </div>
       </main>
     </div>
 
     <BadgeModal
-      :isOpen="isModalOpen"
+      :isOpen="isLeagueModalOpen"
       :league="selectedLeague"
       @close="closeModal"
     />
@@ -61,7 +62,7 @@ const error = ref('');
 const searchTerm = ref('');
 const selectedSport = ref('');
 const selectedLeague = ref<League | null>(null);
-const isModalOpen = ref(false);
+const isLeagueModalOpen = ref(false);
 
 const uniqueSports = computed(() => {
   const sports = new Set(leagues.value.map(league => league.strSport));
@@ -102,11 +103,11 @@ const fetchLeagues = async () => {
 
 const handleLeagueSelect = (league: League) => {
   selectedLeague.value = league;
-  isModalOpen.value = true;
+  isLeagueModalOpen.value = true;
 };
 
 const closeModal = () => {
-  isModalOpen.value = false;
+  isLeagueModalOpen.value = false;
   setTimeout(() => {
     selectedLeague.value = null;
   }, 300);
