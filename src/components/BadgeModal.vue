@@ -73,7 +73,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const emit = defineEmits<{
+defineEmits<{
   close: []
 }>();
 
@@ -94,7 +94,7 @@ const fetchSeasonBadges = async () => {
   error.value = '';
 
   try {
-    const data = await apiService.getSeasonBadges(props.league.idLeague);
+    const data = await apiService.getLeagueSeasons(props.league.idLeague);
     seasons.value = data;
   } catch (err) {
     error.value = 'Failed to load season badges';

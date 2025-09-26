@@ -20,7 +20,7 @@ class ApiService {
     }
   }
 
-  async getSeasonBadges(leagueId: string): Promise<Season[]> {
+  async getLeagueSeasons(leagueId: string): Promise<Season[]> {
     const cached = this.seasonBadgesCache.get(leagueId);
     if (cached) {
       return cached;
