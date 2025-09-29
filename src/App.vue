@@ -6,15 +6,16 @@
       </header>
 
       <main>
-        <div v-if="loading" class="flex justify-center py-12">
+        <div v-if="loading" class="flex justify-center py-12" data-testid="loading-spinner">
           <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
         </div>
 
-        <div v-else-if="error" class="text-center py-12">
-          <p class="text-red-600 text-lg">{{ error }}</p>
+        <div v-else-if="error" class="text-center py-12" data-testid="error-container">
+          <p class="text-red-600 text-lg" data-testid="error-message">{{ error }}</p>
           <button
             @click="fetchLeagues"
             class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            data-testid="retry-button"
           >
             Retry
           </button>

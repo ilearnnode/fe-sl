@@ -1,6 +1,7 @@
 <template>
   <div
     class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-200 hover:border-blue-400"
+    data-testid="league-item"
   >
     <h3 class="text-lg font-semibold text-gray-900 mb-2" data-testid="league-name">{{ league.strLeague }}</h3>
     <p class="text-sm text-gray-600 mb-1">
