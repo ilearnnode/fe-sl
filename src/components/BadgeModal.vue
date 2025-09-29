@@ -5,16 +5,18 @@
         <div
           class="fixed inset-0 bg-black bg-opacity-50"
           @click="$emit('close')"
+          data-testid="modal-backdrop"
         ></div>
 
         <div class="relative bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-            <h2 class="text-xl font-semibold text-gray-900">
+            <h2 class="text-xl font-semibold text-gray-900" data-testid="modal-title">
               {{ league?.strLeague }} - Season Badges
             </h2>
             <button
               @click="$emit('close')"
               class="text-gray-400 hover:text-gray-600"
+              data-testid="close-modal-button"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -23,13 +25,13 @@
           </div>
 
           <div class="px-6 py-4 min-h-[300px] flex items-center justify-center">
-            <div v-if="loading" class="flex flex-col items-center">
+            <div v-if="loading" class="flex flex-col items-center" data-testid="loading-state">
               <div class="animate-pulse bg-gray-200 rounded-lg w-48 h-48 mb-4"></div>
               <div class="animate-pulse bg-gray-200 rounded h-4 w-32"></div>
             </div>
 
             <div v-else-if="error" class="text-center">
-              <p class="text-red-600">{{ error }}</p>
+              <p class="text-red-600" data-testid="error-message">{{ error }}</p>
             </div>
 
             <div v-else-if="seasons.length === 0" class="text-center">
@@ -37,7 +39,7 @@
             </div>
 
             <div v-else-if="latestSeasonWithBadge" class="flex flex-col items-center w-full">
-              <p class="text-sm font-medium text-gray-700 mb-4">{{ latestSeasonWithBadge.strSeason }}</p>
+              <p class="text-sm font-medium text-gray-700 mb-4" data-testid="season-text">{{ latestSeasonWithBadge.strSeason }}</p>
               <div class="relative w-48 h-48 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg border border-gray-200 p-4">
                 <img
                   :src="latestSeasonWithBadge.strBadge"
@@ -47,13 +49,14 @@
                   @error="handleImageError"
                   :class="{ 'opacity-0': !imageLoaded, 'opacity-100': imageLoaded }"
                   style="transition: opacity 0.3s ease"
+                  data-testid="season-badge-image"
                 />
                 <div v-if="!imageLoaded" class="absolute inset-4 animate-pulse bg-gray-200 rounded"></div>
               </div>
             </div>
 
             <div v-else class="text-center">
-              <p class="text-gray-500">No season badge available</p>
+              <p class="text-gray-500" data-testid="no-badge-message">No season badge available</p>
             </div>
           </div>
         </div>

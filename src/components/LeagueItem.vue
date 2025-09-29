@@ -1,13 +1,12 @@
 <template>
   <div
-    @click="handleClick"
     class="p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-200 hover:border-blue-400"
   >
-    <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ league.strLeague }}</h3>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2" data-testid="league-name">{{ league.strLeague }}</h3>
     <p class="text-sm text-gray-600 mb-1">
-      <span class="font-medium">Sport:</span> {{ league.strSport }}
+      <span class="font-medium">Sport:</span> <span data-testid="league-sport">{{ league.strSport }}</span>
     </p>
-    <p v-if="league.strLeagueAlternate" class="text-sm text-gray-500 italic">
+    <p v-if="league.strLeagueAlternate" class="text-sm text-gray-500 italic" data-testid="league-alternate">
       {{ league.strLeagueAlternate }}
     </p>
   </div>
@@ -20,12 +19,5 @@ interface Props {
   league: League;
 }
 
-const props = defineProps<Props>();
-const emit = defineEmits<{
-  select: [league: League]
-}>();
-
-const handleClick = () => {
-  emit('select', props.league);
-};
+defineProps<Props>();
 </script>

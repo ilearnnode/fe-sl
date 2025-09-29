@@ -4,9 +4,9 @@
       v-for="league in leagues"
       :key="league.idLeague"
       :league="league"
-      @select="$emit('select', league)"
+      @click="$emit('select', league)"
     />
-    <div v-if="leagues.length === 0" class="col-span-full text-center text-gray-500">
+    <div v-if="leagues.length === 0" class="col-span-full text-center text-gray-500" data-testid="no-leagues-message">
       No leagues found
     </div>
   </div>
