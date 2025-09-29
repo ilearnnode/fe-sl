@@ -25,5 +25,5 @@ Claude Code was used for this project with the following workflow:
 3. Request fixes/improvements
 4. Repeat
 
-**Development time:** ~90 minutes (code + tests)
-**Deployment setup + api investigation + work log:** ~15 minutes
+**Development time:** ~90 minutes (code + tests)  
+**Deployment setup + api investigation + work log:** ~15 minutes extra
