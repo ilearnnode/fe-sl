@@ -1,12 +1,29 @@
-# Workflow, AI tools
+# Sports League Viewer
 
-Claude code was used for this project. The process was the following:
+A single-page application for browsing and filtering sports leagues from TheSportsDB API.
 
-Ask claude to write code
-Review + testing
-Ask claude to write/update/fix code
-Do it again
+## Live Demo
+https://ilearnnode.github.io/fe-sl/
 
-Code + tests took about 90 mins to implement
+## Tech Stack
+- Vue 3 + TypeScript
+- Tailwind CSS
+- Vite
+- Vitest
 
-API docs investigation, log, deployment took an extra time (~15 mins)
+## Setup
+```bash
+pnpm install
+pnpm run dev
+```
+
+## AI Development Process
+
+Claude Code was used for this project with the following workflow:
+1. Ask Claude to write code
+2. Review and test
+3. Request fixes/improvements
+4. Repeat
+
+**Development time:** ~90 minutes (code + tests)
+**Deployment setup + api investigation + work log:** ~15 minutes
